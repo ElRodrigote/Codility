@@ -1,0 +1,14 @@
+import java.lang.Math;
+
+class Solution {
+    public int solution(int X, int Y, int D) {
+        // write your code in Java SE 8
+        int gap = Y - X;
+        
+        if(gap % D == 0){
+            return gap/D;    
+        }else{
+            return gap/D+1;    
+        }
+    }
+}
