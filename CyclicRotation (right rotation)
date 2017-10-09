@@ -1,0 +1,23 @@
+import java.lang.Math;
+
+class Solution {
+    public int[] solution(int[] A, int K) {
+        // write your code in Java SE 8
+        int n = A.length;
+        
+        if(K == 0 || A.length == 0){
+            return A;    
+        }
+        
+        int[] myArray = new int[n];
+        
+        for(int i = 0; i < n; i++){
+            if(i < (K%n)){
+                myArray[i] = A[(n-(K%n))+i];    
+            }else{
+                myArray[i] = A[Math.abs((K%n)-i)];    
+            }    
+        }
+        return myArray;
+    }
+}
