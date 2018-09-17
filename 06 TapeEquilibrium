@@ -1,50 +1,21 @@
-// you can also use imports, for example:
-// import java.util.*;
-
 // you can write to stdout for debugging purposes, e.g.
-// System.out.println("this is a debug message");
+// console.log('this is a debug message');
 
-import java.lang.Math;
-
-class Solution {
-    public int solution(int[] A) {
-        // write your code in Java SE 8
-        int [] difference = new int[A.length-1];
-        int sumL = 0;
-        int sumR = 0;
-        int min, currMin;
+function solution(A) {
+    // write your code in JavaScript (Node.js 8.9.4)
+    let total = 0;
+    let acum = 0;
+    let min = Number.MAX_SAFE_INTEGER ;
+    
+    total = A.reduce(function (a,b) {
+        return a+b;
+    });
+    for (let i=0; i<A.length-1; i+=1) {
+        acum += A[i];
+        let difference = Math.abs(acum - (total-acum));
         
-        sumL = A[0];
-        
-        for (int i = 1; i < A.length; i++){
-            sumR += A[i];
-        }
-        
-        min = Math.abs(sumL - sumR);
-        
-        for (int j = 1; j < A.length; j++){
-            currMin = Math.abs(sumL - sumR);
-            
-            if(currMin < min){
-                min = currMin;
-            }
-            
-            sumL += A[j];
-            sumR -= A[j];
-            difference[j-1] = currMin;
-        }
-        
-        return (getMin(difference));
+        if (difference < min) min = difference;
     }
     
-    public int getMin(int[] arg){
-        int min1 = arg[0];
-        
-        for(int i = 1; i < arg.length; i++){
-            if(arg[i] < min1){
-                min1 = arg[i];
-            }
-        }
-        return min1;
-    }
+    return min;
 }
