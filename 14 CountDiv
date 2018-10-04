@@ -1,0 +1,22 @@
+/*------------------------------------------------------
+Write a function that, given three integers A, B and K, returns the number of integers 
+within the range [A..B] that are divisible by K
+------------------------------------------------------*/
+
+// you can write to stdout for debugging purposes, e.g.
+// console.log('this is a debug message');
+
+function solution(A, B, K) {
+    // write your code in JavaScript (Node.js 8.9.4)
+  if (K === 0 || A > B) {
+    return 0;
+  }
+  
+  let adding = (A % K === 0) ? 1 : 0;
+  let leftDivisions = Math.floor(A/K);
+  let rightDivisions = Math.floor(B/K);
+  
+  adding += rightDivisions - leftDivisions;
+  
+  return adding;
+}
