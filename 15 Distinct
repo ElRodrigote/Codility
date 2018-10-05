@@ -1,0 +1,26 @@
+/*------------------------------------------------------------
+Write a function that, given an array A consisting of N integers, returns the number of distinct values in array A.
+------------------------------------------------------------*/
+
+// you can write to stdout for debugging purposes, e.g.
+// console.log('this is a debug message');
+
+function solution(A) {
+    // write your code in JavaScript (Node.js 8.9.4)
+    
+    if (A.length === 0) {
+        return 0;
+    } else {
+        let acum = 1;
+    
+        A.sort();
+        
+        for (let i=1; i<A.length; i+=1) {
+            if (A[i] !== A[i-1]) {
+                acum += 1;
+            }    
+        }
+        
+        return acum;
+    }
+}
